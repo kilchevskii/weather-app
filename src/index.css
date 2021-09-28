@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+@import "~antd/dist/antd.css";
+
+.ant-page-header-ghost {
+  background: #bcaf79;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 86px;
+}
+.ant-select-selector {
+  background: #fcf5e7 !important;
+}
+.arrow-wind svg {
+  fill: #ff4d4f;
+  font-size: 20px;
+  margin-top: -15px;
+}
+.search-block {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+}
+
+.find-wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 44%;
+}
+
+.ant-select {
+  width: 470px !important;
+}
+
+.selectCountry {
+  width: 200px !important;
+}
+
+.ant-page-header-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.link-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.link-group ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+.link-group ul li {
+  padding: 10px;
+}
+
+.link-group ul li a svg:hover {
+  fill: #ee7009;
+  transition: 0.3s;
+  transform: scale(1.2);
+}
+
+.link-group ul li a svg {
+  width: 24px;
+  height: 24px;
+  fill: #636363;
+}
+
+.weather-block {
+  height: calc(100vh - 86px);
+  width: 100%;
+  background-color: #f4ecd0;
+  display: flex;
+  justify-content: space-evenly;
+  /* padding: 30px; */
+  flex-wrap: wrap;
+}
+.wrapper-card {
+  width: 350px;
+  height: 400px;
+  margin: 30px;
+  background-color: #fff;
+  display: flex;
+  justify-content: inherit;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0px;
+  border-radius: 15px;
+  -webkit-box-shadow: -3px 3px 20px 2px rgba(34, 60, 80, 0.24);
+  -moz-box-shadow: -3px 3px 20px 2px rgba(34, 60, 80, 0.24);
+  box-shadow: -3px 3px 20px 2px rgba(34, 60, 80, 0.24);
+  transition: 0.15s;
+}
+
+.wrapper-card:hover {
+  width: 350px;
+  height: 405px;
+}
+
+.control-btns {
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+}
+.ant-btn {
+  border-radius: 5px;
+}
+.cityName {
+  font-weight: 500;
+}
+.control-btns .update-btn {
+  background-color: rgb(97, 139, 49) !important;
+  border: none;
+  outline: none;
+  color: #fff;
+}
+.card-list {
+  text-align: center;
+  font-size: 16px;
+}
+
+.popup-block {
+  background: #fff;
+  width: 375px;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+}
+.popup-wrapper {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.popup-block .ant-btn.hide-popup-btn {
+  position: absolute !important;
+  top: -15px !important;
+  right: -15px !important;
+  background-color: #fff;
+  width: 20px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+}
+.ant-btn.hide-popup-btn svg {
+  height: 15px;
+  width: 14px;
+}
