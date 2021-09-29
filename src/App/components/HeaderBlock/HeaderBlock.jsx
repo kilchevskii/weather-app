@@ -1,7 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Select, Button } from "antd";
 import axios from "axios";
-import { CloseOutlined, GithubOutlined, MailOutlined, LinkedinOutlined } from "@ant-design/icons";
+import {
+  CloseOutlined,
+  GithubOutlined,
+  MailOutlined,
+  LinkedinOutlined,
+} from "@ant-design/icons";
 import { API_KEY } from "../api/api";
 import { weatherRequest } from "../redux/thunk/weatherThunk";
 import { useDispatch } from "react-redux";
@@ -9,14 +14,15 @@ function HeaderBlock() {
   const { Option } = Select;
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState("Выберите Страну и введите Город");
+  const [inputValueLength, setInputValueLength] = useState(0)
+  const [selectedCity, setSelectedCity] = useState("");
   const [hideMenu, setHideMenu] = useState(false);
   const [hidePopup, setHidePopup] = useState(false);
-  const [selectedCity, setSelectedCity] = useState("");
   const dispatch = useDispatch();
   useEffect(() => {
     if (hidePopup) {
-      setTimeout(() => setHidePopup(false), 1500);
+      setTimeout(() => setHidePopup(false), 2000);
     }
   }, [hidePopup]);
   useEffect(() => {
@@ -29,14 +35,15 @@ function HeaderBlock() {
   useEffect(() => {
     if (selectedCity) {
       localStorage.getItem(selectedCity)
-        ? setHidePopup(!hidePopup) && setSelectedCity("") && setInputValue(0)
+        ? setHidePopup(!hidePopup) && setSelectedCity("") && setInputValue(null) && setInputValueLength(0)
         : axios
             .get(
               `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${API_KEY}&units=metric`
             )
             .then((res) => dispatch(weatherRequest(res)));
       setSelectedCity("");
-      setInputValue(0);
+      setInputValue('Введите новый город');
+      setInputValueLength(0)
     }
   }, [selectedCity]);
 
@@ -47,17 +54,19 @@ function HeaderBlock() {
       )
       .then((res) => setCity(res.data[value]));
   }
-  const handleCnangeInput = (val) => {
-    setInputValue(val);
-    if (inputValue?.length >= 2) {
+  const handleCnangeInput = (event) => {
+    setInputValueLength(event?.length)
+    setInputValue(event);
+    if (setCountry && inputValueLength >= 2) {
       return setHideMenu(true);
     } else {
       return setHideMenu(false);
     }
   };
-  const onHandleLocation = (val) => {
+  const onHandleLocation = (name) => {
     setHideMenu(false);
-    setSelectedCity(val);
+    setSelectedCity(name);
+    setInputValueLength(0)
   };
   return (
     <>
@@ -66,7 +75,7 @@ function HeaderBlock() {
           allowClear={true}
           showSearch
           className="selectCountry"
-          defaultValue="Выберите Страну"
+          placeholder="Выберите Страну"
           style={{ width: 120 }}
           onChange={getCity}
         >
@@ -81,13 +90,14 @@ function HeaderBlock() {
             : null}
         </Select>
         <Select
-          onSearch={handleCnangeInput}
+          onChange={handleCnangeInput}
           showSearch
+          onSearch={(event) => handleCnangeInput(event)}
           allowClear={true}
           onSelect={onHandleLocation}
           open={hideMenu}
+          value={inputValue}
           style={{ width: 200 }}
-          defaultValue="Выберите Страну и введите Город"
           optionFilterProp="children"
           filterOption={(input, option) =>
             option.children?.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -126,18 +136,26 @@ function HeaderBlock() {
       <div className="link-group">
         <ul>
           <li>
-            <a href="https://github.com/kilchevskii" target="_blank">
+            <a
+              rel="noreferrer"
+              href="https://github.com/kilchevskii"
+              target="_blank"
+            >
               <GithubOutlined />
             </a>
           </li>
           <li>
-            <a href="https://t.me/westsmokes" target="_blank">
+            <a rel="noreferrer" href="https://t.me/westsmokes" target="_blank">
               <MailOutlined />
             </a>
           </li>
           <li>
-            <a href="https://www.linkedin.com/in/westsmokes/" target="_blank">
-            <LinkedinOutlined />
+            <a
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/westsmokes/"
+              target="_blank"
+            >
+              <LinkedinOutlined />
             </a>
           </li>
         </ul>

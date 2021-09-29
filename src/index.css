@@ -23,6 +23,11 @@ code {
 .ant-select-selector {
   background: #fcf5e7 !important;
 }
+
+.ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+  color: #000 !important;
+}
 .arrow-wind svg {
   fill: #ff4d4f;
   font-size: 20px;

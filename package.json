@@ -36,15 +36,14 @@
   },
   "browserslist": {
     "production": [
-      "> 1%",
-      "ie 10"
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "modern": [
+    "development": [
       "last 1 chrome version",
-      "last 1 firefox version"
-    ],
-    "ssr": [
-      "node 12"
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
   "development": [
