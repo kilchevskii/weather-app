@@ -35,7 +35,7 @@ function HeaderBlock() {
   useEffect(() => {
     if (selectedCity) {
       localStorage.getItem(selectedCity)
-        ? setHidePopup(!hidePopup) && setSelectedCity("") && setInputValue(null) && setInputValueLength(0)
+        ? setHidePopup(false) && setSelectedCity("") && setInputValue(null) && setInputValueLength(0)
         : axios
             .get(
               `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${API_KEY}&units=metric`
@@ -45,7 +45,7 @@ function HeaderBlock() {
       setInputValue('Введите новый город');
       setInputValueLength(0)
     }
-  }, [selectedCity]);
+  }, [selectedCity, dispatch]);
 
   function getCity(value) {
     axios

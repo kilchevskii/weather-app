@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import React, { useEffect } from "react";
+import React from "react";
 import { deleteWeather, updateWeather } from "../redux/thunk/weatherThunk";
 import { useDispatch } from "react-redux";
 import { ArrowUpOutlined } from "@ant-design/icons";
@@ -17,11 +17,6 @@ const WeatherCard = ({
   const updateWeatherCard = () => {
     dispatch(updateWeather(nameCity));
   };
-  useEffect(() => {
-    return () => {
-      console.log(`demontage ${nameCity}`);
-    };
-  }, []);
   const deleteWeatherCard = () => {
     dispatch(deleteWeather(nameCity));
   };

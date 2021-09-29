@@ -13,7 +13,6 @@ function App() {
   const { data } = useSelector(({ weathers }) => weathers);
   useEffect(() => {
     dispatch(renderWeather());
-    console.log('renderWeather');
   }, [dispatch]);
   return (
     <Content>
