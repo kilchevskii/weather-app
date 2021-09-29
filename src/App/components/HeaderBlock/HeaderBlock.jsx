@@ -80,7 +80,7 @@ function HeaderBlock() {
           onChange={getCity}
         >
           {country
-            ? country.map((item, index) => {
+            ? country.sort().slice(1).map((item, index) => {
                 return (
                   <Option key={index} value={item}>
                     {item}
