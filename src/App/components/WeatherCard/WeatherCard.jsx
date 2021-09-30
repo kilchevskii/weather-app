@@ -12,6 +12,7 @@ const WeatherCard = ({
   pressureCity,
   cityId,
   timeStamp,
+  weatherIcon,
 }) => {
   const dispatch = useDispatch();
   const updateWeatherCard = () => {
@@ -48,15 +49,50 @@ const WeatherCard = ({
     time = yyyy + "-" + mm + "-" + dd + ", " + h + ":" + min + " " + ampm;
     return time;
   }
+  function imageIcon(weatherIcon) {
+    switch (weatherIcon) {
+      case "01d":
+        return "http://openweathermap.org/img/wn/01d@2x.png";
+      case "01n":
+        return "http://openweathermap.org/img/wn/01n@2x.png";
+      case "02d":
+        return "http://openweathermap.org/img/wn/02d@2x.png";
+      case "02n":
+        return "http://openweathermap.org/img/wn/02n@2x.png";
+      case "03d" || "03n":
+        return "http://openweathermap.org/img/wn/03d@2x.png";
+      case "04d" || "04n":
+        return "http://openweathermap.org/img/wn/04d@2x.png";
+      case "09d" || "09n":
+        return "http://openweathermap.org/img/wn/09d@2x.png";
+      case "10d":
+        return "http://openweathermap.org/img/wn/10d@2x.png";
+      case "10n":
+        return "http://openweathermap.org/img/wn/10n@2x.png";
+      case "11d" || "11n":
+        return "http://openweathermap.org/img/wn/11d@2x.png";
+      case "13d" || "13n":
+        return "http://openweathermap.org/img/wn/13d@2x.png";
+      case "50d" || "50n":
+        return "http://openweathermap.org/img/wn/50d@2x.png";
+      default:
+        return "http://openweathermap.org/img/wn/01d@2x.png";;
+    }
+  }
   return (
     <div className="wrapper-card">
-      <p className="card-list">Город <span className="cityName">{nameCity}</span></p>
+      <p className="card-list">
+        Город <span className="cityName">{nameCity}</span><img className="weather-icon" alt="weather-icon" src={imageIcon(weatherIcon)}></img>
+      </p>
       <p className="card-list">Температура {temperatureCity}°</p>
       <p className="card-list">Влажность {humidityCity}%</p>
       <p className="card-list">Давление {pressureCity}</p>
       <p className="card-list">
         Сила ветра {windPowerCity} и направление ветра <br />
-          <ArrowUpOutlined  className="arrow-wind" style={{transform: `rotate(${getDirection(degWindCity)}deg)`}}/>
+        <ArrowUpOutlined
+          className="arrow-wind"
+          style={{ transform: `rotate(${getDirection(degWindCity)}deg)` }}
+        />
       </p>
       <p className="card-list">
         Последнее обновление данных

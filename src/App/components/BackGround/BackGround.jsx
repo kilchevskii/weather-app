@@ -4,7 +4,7 @@ import "./styles.css";
 function BackGround() {
   return (
     <div className="container">
-      <h1>Welcome</h1>
+      <h1>Welcome to Weather App</h1>
 
       <div className="bird-container bird-container--one">
         <div className="bird bird--one"></div>

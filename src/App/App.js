@@ -34,6 +34,7 @@ function App() {
               pressureCity={item?.data?.main?.pressure}
               cityId={item?.data?.id}
               timeStamp={item?.data?.dt}
+              weatherIcon={item?.data?.weather[0].icon}
             />
           ))
         ) : (
