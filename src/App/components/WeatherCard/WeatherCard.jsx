@@ -76,37 +76,59 @@ const WeatherCard = ({
       case "50d" || "50n":
         return "http://openweathermap.org/img/wn/50d@2x.png";
       default:
-        return "http://openweathermap.org/img/wn/01d@2x.png";;
+        return "http://openweathermap.org/img/wn/01d@2x.png";
     }
   }
   return (
-    <div className="wrapper-card">
-      <p className="card-list">
-        Город <span className="cityName">{nameCity}</span><img className="weather-icon" alt="weather-icon" src={imageIcon(weatherIcon)}></img>
-      </p>
-      <p className="card-list">Температура {temperatureCity}°</p>
-      <p className="card-list">Влажность {humidityCity}%</p>
-      <p className="card-list">Давление {pressureCity}</p>
-      <p className="card-list">
-        Сила ветра {windPowerCity} и направление ветра <br />
-        <ArrowUpOutlined
-          className="arrow-wind"
-          style={{ transform: `rotate(${getDirection(degWindCity)}deg)` }}
-        />
-      </p>
-      <p className="card-list">
-        Последнее обновление данных
-        <br /> {convertTimestamp(timeStamp)}
-      </p>
-      <div className="control-btns">
-        <Button onClick={deleteWeatherCard} type="primary" danger>
-          Удалить
-        </Button>
-        <Button onClick={updateWeatherCard} className="update-btn">
-          Обновить
-        </Button>
+    <>
+      <div className="wrapper-card">
+        <p className="card-list">
+          Город <span className="cityName">{nameCity}</span>
+          <img
+            className="weather-icon"
+            alt="weather-icon"
+            src={imageIcon(weatherIcon)}
+          ></img>
+        </p>
+        <p className="card-list">Температура {temperatureCity}°</p>
+        <p className="card-list">Влажность {humidityCity}%</p>
+        <p className="card-list">Давление {pressureCity}</p>
+        <p className="card-list">
+          Сила ветра {windPowerCity} и направление ветра <br />
+          <ArrowUpOutlined
+            className="arrow-wind"
+            style={{ transform: `rotate(${getDirection(degWindCity)}deg)` }}
+          />
+        </p>
+        <p className="card-list">
+          Последнее обновление данных
+          <br /> {convertTimestamp(timeStamp)}
+        </p>
+        <div className="control-btns">
+          <Button onClick={deleteWeatherCard} type="primary" danger>
+            Удалить
+          </Button>
+          <Button onClick={updateWeatherCard} className="update-btn">
+            Обновить
+          </Button>
+        </div>
       </div>
-    </div>
+      <div className="bird-container bird-container--one">
+        <div className="bird bird--one"></div>
+      </div>
+
+      <div className="bird-container bird-container--two">
+        <div className="bird bird--two"></div>
+      </div>
+
+      <div className="bird-container bird-container--three">
+        <div className="bird bird--three"></div>
+      </div>
+
+      <div className="bird-container bird-container--four">
+        <div className="bird bird--four"></div>
+      </div>
+    </>
   );
 };
 

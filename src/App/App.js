@@ -3,9 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Layout, PageHeader } from "antd";
 import HeaderBlock from "./components/HeaderBlock";
 import WeatherCard from "./components/WeatherCard";
-import {
-  renderWeather,
-} from "./components/redux/thunk/weatherThunk";
+import { renderWeather } from "./components/redux/thunk/weatherThunk";
 import BackGround from "./components/BackGround";
 const { Content } = Layout;
 function App() {
