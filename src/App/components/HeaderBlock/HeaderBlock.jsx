@@ -14,8 +14,10 @@ function HeaderBlock() {
   const { Option } = Select;
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [inputValue, setInputValue] = useState("Выберите Страну и введите Город");
-  const [inputValueLength, setInputValueLength] = useState(0)
+  const [inputValue, setInputValue] = useState(
+    "Выберите Страну и введите Город"
+  );
+  const [inputValueLength, setInputValueLength] = useState(0);
   const [selectedCity, setSelectedCity] = useState("");
   const [hideMenu, setHideMenu] = useState(false);
   const [hidePopup, setHidePopup] = useState(false);
@@ -35,15 +37,19 @@ function HeaderBlock() {
   useEffect(() => {
     if (selectedCity) {
       localStorage.getItem(selectedCity)
-        ? setHidePopup(false) && setSelectedCity("") && setInputValue(null) && setInputValueLength(0)
+        ? setHidePopup(false) &&
+          setSelectedCity("") &&
+          setInputValue(null) &&
+          setInputValueLength(0)
         : axios
             .get(
               `https://api.openweathermap.org/data/2.5/weather?q=${selectedCity}&appid=${API_KEY}&units=metric`
             )
             .then((res) => dispatch(weatherRequest(res)));
       setSelectedCity("");
-      setInputValue('Введите новый город');
-      setInputValueLength(0)
+      setInputValue("Введите новый город");
+      setInputValueLength(0);
+      setHidePopup(true);
     }
   }, [selectedCity, dispatch]);
 
@@ -55,7 +61,7 @@ function HeaderBlock() {
       .then((res) => setCity(res.data[value]));
   }
   const handleCnangeInput = (event) => {
-    setInputValueLength(event?.length)
+    setInputValueLength(event?.length);
     setInputValue(event);
     if (setCountry && inputValueLength >= 2) {
       return setHideMenu(true);
@@ -66,7 +72,7 @@ function HeaderBlock() {
   const onHandleLocation = (name) => {
     setHideMenu(false);
     setSelectedCity(name);
-    setInputValueLength(0)
+    setInputValueLength(0);
   };
   return (
     <>
@@ -80,13 +86,16 @@ function HeaderBlock() {
           onChange={getCity}
         >
           {country
-            ? country.sort().slice(1).map((item, index) => {
-                return (
-                  <Option key={index} value={item}>
-                    {item}
-                  </Option>
-                );
-              })
+            ? country
+                .sort()
+                .slice(1)
+                .map((item, index) => {
+                  return (
+                    <Option key={index} value={item}>
+                      {item}
+                    </Option>
+                  );
+                })
             : null}
         </Select>
         <Select
